@@ -17,7 +17,7 @@
     <div class="shadow mb-5 bg-white rounded">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand text-info" href="/">BNCC</a>
+    <p class="fw-bold"><a class="navbar-brand text-info" href="/">BNCC</a></p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,30 +32,45 @@
   </div>
 </nav>
     </div>
-
-<h1 class="text-center">Daftar Absensi</h1>
-<br>
-<div class="d-flex flex-row justify-content-center gap-5">
-    @foreach ($absensis as $data)
-        <div class="card" style="width: 18rem;">
-            <img src="{{asset('/storage/image/'.$data->image)}}" class="card-img-top" alt="">
-            <div class="card-body">
-              <p class="card-title">Nama  : {{$data->name}}</p>
-              <p class="card-text">NIM    : {{$data->NIM}}</p>
-              <p class="card-text">BNCCID : {{$data->BNCCID}}</p>
-              <p class="card-text">Tanggal: {{$data->absensi_Date}}</p>
-              <p class="card-text">LnT: {{$data->absen->LNT_class}}</p>
-              <br>
-              <a href="{{route('edit', $data->id)}}" class="btn btn-info btn-lg">Edit</a>
-              <br>
-              <form action="{{route('delete', $data->id)}}" method="POST">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger btn-lg">Delete</button>
-            </div>
-          </div>
-    @endforeach
-        </div>
+<div class = "p-5">
+  <h1 class="text-center">Edit Absensi</h1>
+  <br>
+<form action="{{route('update', $absensi->id)}}" method="POST">
+  @csrf
+  @method('patch')
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" >Nama </label>
+    <div class="col-sm-10">
+    <input type="text" value="{{$absensi -> name}}" class="form-control" id="" name = "name" placeholder="Nama Lengkap">
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">NIM</label>
+    <div class="col-sm-10">
+    <input type="text" value="{{$absensi -> NIM}}" class="form-control" id="" name = "NIM" placeholder="Nomor Induk Mahasiswa">
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">BNCC ID</label>
+    <div class="col-sm-10">
+    <input type="text" value="{{$absensi -> BNCCID}}" class="form-control" id="" name = "BNCCID" placeholder="BNCC...">
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Tanggal Pertemuan</label>
+                <div class="col-sm-10">
+                <input type="date" value="{{$absensi -> absensi_date}}" class="form-control" id="" name="absensi_Date">
+                </div>
+  </div>
+  <br>
+  <div class="text-center">
+  <button type="submit" class="btn btn-primary">Edit</button>
+  </div>
+</form>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 

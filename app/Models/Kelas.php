@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class absensi extends Model
+class Kelas extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'NIM', 'BNCCID', 'absensi_Date', 'image', 'Kelas_id'];
+    protected $fillable = ['LNT_class'];
 
     public function absen()
     {
-        return $this -> belongsTo(Kelas::class, 'Kelas_id');
+        return $this->hasMany(absensi::class);
     }
 }

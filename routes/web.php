@@ -17,3 +17,7 @@ use App\Http\Controllers\AbsensiController;
 Route::get('/', [AbsensiController::class, 'show']) -> name('show');
 Route::get('/create', [AbsensiController::class, 'create']) -> name('create');
 Route::post('/store', [AbsensiController::class, 'store']) -> name('store');
+Route::get('/edit/{id}',[AbsensiController::class, 'edit']) -> name('edit');
+Route::patch('/update/{id}',[AbsensiController::class, 'update']) -> name('update');
+Route::delete('/delete/{id}', [AbsensiController::class, 'delete']) -> name('delete');
+

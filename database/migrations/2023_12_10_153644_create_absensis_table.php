@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('NIM');
             $table->string('BNCCID');
-            $table->date('absensi_date');
+            $table->date('absensi_Date');
+            $table->string('image');
+            $table->unsignedBigInteger('Kelas_id');
+            $table->foreign('Kelas_id')->references('id')->on('Kelas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
